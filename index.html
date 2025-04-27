@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>smart-md-importer</title>
+  <style>
+    .tab-btn {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 6px 12px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .tab-btn.active {
+      background-color: #ddd;
+      font-weight: bold;
+    }
+    .tab-content {
+      display: none;
+      margin-top: 20px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smart Markdown Importer</h1>
+
+  <!-- Tabs -->
+  <div>
+    <span class="tab-btn active" data-tab="single">单个导入</span>
+    <span class="tab-btn" data-tab="batch">批量导入</span>
+    <span class="tab-btn" data-tab="config">导入配置</span>
+  </div>
+
+  <!-- 单个导入 -->
+  <div id="tab-single" class="tab-content active">
+    <div>
+      <label>选择 Markdown 文件：</label><br>
+      <input type="text" id="md-input" placeholder="请输入或选择 .md 文件路径" style="width: 60%;" />
+      <button id="select-md">📂 浏览</button>
+      <p id="md-path-msg">未选择文件</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <label>选择导入目录：</label><br>
+      <input type="text" id="dir-input" placeholder="请输入或选择导入目录路径" style="width: 60%;" />
+      <button id="select-dir">📂 浏览</button>
+      <p id="dir-path-msg">未选择目录</p>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <button id="start-import" style="padding: 8px 20px;">🚀 开始导入</button>
+      <p id="import-status">还未开始导入</p>
+    </div>
+  </div>
+
+  <!-- 批量导入（暂未实现） -->
+  <div id="tab-batch" class="tab-content">
+    <div style="margin-top: 20px;">
+      <label>选择 Markdown 文件夹（会扫描所有 .md 文件）：</label><br>
+      <input type="text" id="batch-folder-input" placeholder="请选择文件夹" style="width: 60%;" />
+      <button id="select-batch-folder">📂 浏览</button>
+      <p id="batch-folder-msg">未选择目录</p>
+    </div>
+  
+    <div style="margin-top: 20px;">
+      <label>选择导入到的目标文件夹：</label><br>
+      <input type="text" id="batch-output-folder" placeholder="选择导出文件夹" style="width: 60%;" />
+      <button id="select-batch-output">📂 浏览</button>
+      <p id="batch-output-msg">未选择输出目录</p>
+    </div>
+  
+    <div style="margin-top: 30px;">
+      <button id="start-batch-import" style="padding: 8px 20px;">🚀 开始批量导入</button>
+    </div>
+  
+    <div style="margin-top: 30px;">
+      <label>批量导入日志：</label><br>
+      <textarea id="batch-log" rows="15" style="width: 100%; resize: vertical;" readonly></textarea>
+    </div>
+  </div>
+
+  <!-- 导入配置 -->
+  <div id="tab-config" class="tab-content">
+    <div style="margin-top: 20px;">
+        <label>原始笔记根路径 (oldRoot)：</label><br>
+        <input type="text" id="old-root-input" placeholder="如 E:/Blog/MyBlog/source/_posts" style="width: 60%;" />
+        <button id="select-old-root">📂 浏览</button>
+    </div>
+      
+    <div style="margin-top: 10px;">
+        <label>新笔记根路径 (newRoot)：</label><br>
+        <input type="text" id="new-root-input" placeholder="如 C:/Users/你/Desktop/Vault" style="width: 60%;" />
+        <button id="select-new-root">📂 浏览</button>
+    </div>
+
+    <div>
+      <label>选择 YAML 模板文件：</label><br>
+      <input type="text" id="yaml-input" placeholder="请输入或选择模板文件路径" style="width: 60%;" />
+      <button id="select-yaml">📂 浏览</button>
+      <p id="yaml-msg">未选择模板</p>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <label>模板预览：</label><br>
+      <textarea id="yaml-preview" rows="10" style="width: 100%; resize: vertical;" readonly placeholder="模板内容将在此处显示"></textarea>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <label>图床路径：</label><br>
+      <input type="text" id="img-dir-input" placeholder="图片输出目录，如 ./assets/img" style="width: 60%;" />
+      <button id="select-img-dir">📂 浏览</button>
+      <p id="img-dir-msg">未设置图床路径</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <button id="save-config">💾 保存配置</button>
+        <button id="load-config">📂 加载配置</button>
+        <p id="config-status">未保存/加载配置</p>
+    </div>  
+  </div>
+
+  <script src="./renderer/renderer.js"></script>
+</body>
+</html>

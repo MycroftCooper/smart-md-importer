@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run electron",
+      "runtimeExecutable": "electron",
+      "cwd": "${workspaceFolder}",
+      "args": []
+    },
+    {
+      "name": "Debug Electron Main",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/main.js",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+      },
+      "outFiles": [
+        "${workspaceFolder}/**/*.js"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}

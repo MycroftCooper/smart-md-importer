@@ -1,0 +1,10 @@
+{
+    "name": "Debug Test ResolveImage",
+    "type": "node",
+    "request": "launch",
+    "program": "${workspaceFolder}/test/testResolveImage.js",
+    "cwd": "${workspaceFolder}",
+    "console": "integratedTerminal",
+    "internalConsoleOptions": "neverOpen"
+  }
+  
